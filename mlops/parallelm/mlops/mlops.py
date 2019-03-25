@@ -30,8 +30,7 @@ from parallelm.mlops.events.system_alert import SystemAlert
 from parallelm.mlops.ion.ion import Agent
 from parallelm.mlops.logger_factory import logger_factory
 from parallelm.mlops.mlops_ctx import MLOpsCtx
-from parallelm.mlops.mlops_exception import MLOpsException
-from parallelm.mlops.mlops_mode import MLOpsMode
+from parallelm.mlops.mlops_exception import MLOpsException, SuppressException
 from parallelm.mlops.models.model import Model
 from parallelm.mlops.models.model import ModelFormat
 from parallelm.mlops.models.model_filter import ModelFilter
@@ -242,6 +241,9 @@ class MLOps(object):
     @property
     def init_called(self):
         return self._init_called
+
+    def suppress_connection_errors(self, flag):
+        SuppressException.set_suppress(flag)
 
     @property
     def mlapp_id(self):
