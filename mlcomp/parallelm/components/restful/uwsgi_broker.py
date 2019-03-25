@@ -5,6 +5,7 @@ setup, configuration and execution
 import logging
 import os
 import subprocess
+import sys
 try:
     import uwsgi
     from parallelm.components.restful.uwsgi_post_fork import UwsgiPostFork
@@ -93,8 +94,7 @@ class UwsgiBroker(Base):
             f.write(wsgi_entry_script_code)
 
     def _generate_ini_file(self, shared_conf, entry_point_conf):
-        pypath = os.environ.get("PYTHONPATH", None)
-        egg_paths = [p for p in pypath.split(':') if p.endswith(".egg")]
+        egg_paths = [p for p in sys.path if p.endswith(".egg")]
         egg_paths = ":".join(egg_paths)
 
         cheaper_conf = UwsgiCheaperSubSystem.get_config()
