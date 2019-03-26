@@ -21,7 +21,7 @@ setup(
     description="An engine for running component based ML pipelines",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/mlpiper/mlpiper/tree/master/reflex-algos/src/main/python/mlcomp",
+    url="https://github.com/mlpiper/mlpiper/tree/master/mlcomp",
     author="ParallelM",
     author_email="info@parallelm.com",
     license="Apache License 2.0",

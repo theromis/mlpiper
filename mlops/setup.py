@@ -21,7 +21,7 @@ setup(
     description="A library to read and report MLApp statistics",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/mlpiper/mlpiper/tree/master/reflex-algos/src/main/python/mlops",
+    url="https://github.com/mlpiper/mlpiper/tree/master/mlops",
     author="ParallelM",
     author_email="info@parallelm.com",
     license="Apache License 2.0",
