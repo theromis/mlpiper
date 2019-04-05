@@ -30,7 +30,7 @@ from parallelm.mlops.events.system_alert import SystemAlert
 from parallelm.mlops.ion.ion import Agent
 from parallelm.mlops.logger_factory import logger_factory
 from parallelm.mlops.mlops_ctx import MLOpsCtx
-from parallelm.mlops.mlops_exception import MLOpsException, SuppressException
+from parallelm.mlops.mlops_exception import MLOpsException, MLOpsConnectionException, SuppressException
 from parallelm.mlops.models.model import Model
 from parallelm.mlops.models.model import ModelFormat
 from parallelm.mlops.models.model_filter import ModelFilter
@@ -780,6 +780,7 @@ class MLOps(object):
         self.event(CanaryAlert(title, is_healthy, score, threshold))
         return self
 
+    @SuppressException([MLOpsConnectionException])
     def event(self, event_obj):
         """
         Generate an event which is sent to MLOps.
@@ -796,6 +797,7 @@ class MLOps(object):
         self._event_broker.send_event(event_obj)
         return self
 
+    @SuppressException([MLOpsConnectionException])
     def set_event(self, name, type=None, data=None, is_alert=False, timestamp=None):
         """
         Generate an event which is sent to MLOps.
